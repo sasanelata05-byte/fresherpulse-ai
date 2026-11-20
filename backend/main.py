@@ -16,8 +16,9 @@ app = FastAPI(
 
 DB_PATH = Path(__file__).resolve().parent / "jobs.db"
 
+
 # ==========================================
-# CORS
+# CORS CONFIGURATION
 # ==========================================
 
 app.add_middleware(
@@ -26,10 +27,12 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173"
     ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
+
 
 # ==========================================
 # DATABASE
